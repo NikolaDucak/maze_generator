@@ -1,0 +1,3 @@
+# ignore buid and object directory
+obj/
+build/

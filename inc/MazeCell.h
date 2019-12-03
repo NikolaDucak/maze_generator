@@ -9,6 +9,7 @@ struct MazeCell{
 
 	bool isConnected(Direction dir) const;
 	void connect(Direction dir);
+	void disconect(Direction dir);
 	bool visited() const;
 };
 

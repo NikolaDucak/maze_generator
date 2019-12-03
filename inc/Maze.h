@@ -8,16 +8,24 @@
 
 class Maze{
 	friend MazePosition;
-	unsigned int width,height;
+	int width,height;
 	MazeCell* cells;
 
 public:
-	Maze(unsigned int width, unsigned int height);
-	//const MazeCell& at(unsigned int x, unsigned int y) const;
-	MazePosition at(unsigned int x, unsigned int y) const;
+	Maze(int width, int height);
+	Maze(const Maze& org);
+	Maze& operator = (const Maze& other);
+
+	int getWidth() const { return width; }	
+	int getHeight() const { return height; }
+	MazePosition at(int x, int y) const;
+	void connect(int x,int y, Direction dir);
+	void disconnect(int x, int y, Direction dir);
+
+	~Maze();
+
 private:
-	bool succsesfullyConnectedToNeighbour(Coords& cellCoords);
-	void connect(Coords& from, Coords& to, Direction dir);
+	bool connectToNeighbour(Coords& cellCoords);
 	bool areCoordsValid(const Coords& coords) const;
 	MazeCell& cellAt(const Coords& coords) const;
 };

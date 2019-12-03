@@ -6,6 +6,9 @@ bool MazeCell::isConnected(Direction dir) const{
 void MazeCell::connect(Direction dir){
 	connections |= connectionMask[dir];
 }
+void MazeCell::disconect(Direction dir){
+	connections &= ~(connectionMask[dir]);
+}
 bool MazeCell::visited() const{
 	return connections;
 }
@@ -15,4 +18,3 @@ const unsigned char MazeCell::connectionMask[] = {
 	(1 << 2), // up
 	(2 << 3)  // down
 };
-
